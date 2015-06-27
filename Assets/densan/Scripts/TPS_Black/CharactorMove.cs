@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CharactorMove : MonoBehaviour {
 	public float angle;
-	public float rds = 425;
+	public float rds = 410;
 	public float speed = 60;
 	Vector3 center;
 	Vector3 pos;

@@ -16,7 +16,7 @@ public class InstantiateObject :EditorWindow{
 		if(GUILayout.Button("Start")){
 			foreach(GameObject obj in GameObject.FindObjectsOfType(typeof(GameObject))){
 				foreach(MonoBehaviour mono in obj.GetComponents<MonoBehaviour>()){
-					mono.Invoke("Instantiate",0);
+					mono.Invoke("InstantiateObj",0);
 				}
 			}
 		}

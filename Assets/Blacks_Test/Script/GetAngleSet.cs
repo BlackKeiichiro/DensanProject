@@ -15,7 +15,6 @@ public class GetAngleSet : MonoBehaviour {
 			Vector3 localvector = Vector3.forward;
 			localvector.x += rayhit.normal.x;
 			this.transform.localRotation = Quaternion.Euler(localvector);
-			//this.transform.localPosition =  rayhit.textureCoord;
 		}
 	}
 }
