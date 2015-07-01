@@ -3,17 +3,16 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class UIControl : MonoBehaviour {
-	Manager mng;
-	// Use this for initialization
+	Manager manager;
 	void Start () {
-		mng = GameObject.Find("Manager").GetComponent<Manager>();
+		manager = GameObject.Find("Manager").GetComponent<Manager>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(mng._magnitude > 0)
+		if(manager._magnitude > 0)
 		{
-			this.GetComponent<Image>().fillAmount = mng._magnitude/10;
+			this.GetComponent<Image>().fillAmount = manager._magnitude/10;
 		}
 	}
 }

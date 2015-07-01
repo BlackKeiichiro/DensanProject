@@ -10,11 +10,11 @@ public class CharactorConrtoler : MonoBehaviour {
 	float maxmargin= 0;
 	float minmargin = 1;
 	Vector3 saveposition;
-	Manager mng;
+	Manager manager;
 	public float speed;
 	// Use this for initialization
 	void Start () {
-		mng = GameObject.Find("Manager").GetComponent<Manager>();
+		manager = GameObject.Find("Manager").GetComponent<Manager>();
 		rb = GetComponent<Rigidbody>();
 	}	
 	
@@ -27,13 +27,13 @@ public class CharactorConrtoler : MonoBehaviour {
 		}
 		else if(v < -0.1){
 			_velocity = v * Time.deltaTime * 15;
-			mng._magnitude -= 0.2f;
+			manager._magnitude -= 0.2f;
 		}
 		else{_velocity = _velocity = v * Time.deltaTime * 5;
-			mng._magnitude -= 0.2f;}
+			manager._magnitude -= 0.2f;}
 		if(h > 0.1  || h < -0.1){
 			ver = h * Time.deltaTime * 7;
-			mng._magnitude -= 0.6f;
+			manager._magnitude -= 0.6f;
 		}
 		/*else if(h < -0.1){
 			ver = h * Time.deltaTime * 10;
@@ -41,7 +41,7 @@ public class CharactorConrtoler : MonoBehaviour {
 		
 		if(this.transform.position.z > Camera.main.transform.position.z){
 			rb.velocity = new Vector3(ver*30,0,_velocity*40);
-			mng._magnitude = Vector3.Dot(rb.velocity,transform.forward);
+			manager._magnitude = Vector3.Dot(rb.velocity,transform.forward);
 		}
 		this.transform.position += new Vector3(0,0,0.2f);
 		saveposition = transform.position;

@@ -7,52 +7,41 @@ public class ItemInstantiate : MonoBehaviour {
 	Vector3 nowposition;
 	Vector3 saveposition;
 	Manager _manager;
-	int mycount = -1;
+	public int _radian = 420;
 	// Use this for initialization
 	void Awake(){
-		float inity = 665;
-		float i = 0;
-		while(inity > -205){
-			i += 0.1f;
-			Vector3 center = new Vector3(0,inity,0);
-			float angle = 50* i %360;
-			inity -= 1.3f;
-			Vector3 _radian = Vector3.right * 420;
-			Vector3 pos = Quaternion.AngleAxis(angle,Vector3.up)*_radian;	
-			GameObject localobject =  Instantiate(Resources.Load("Prefab/Item")) as GameObject;
-			localobject.transform.position = pos + center;
-			Undo.RegisterCreatedObjectUndo(localobject, "CreateObject");
-		}
+		_manager = GameObject.Find("Manager").GetComponent<Manager>();
+		InstatiateObject();
 	}
 	
 	void Start () {
-		_manager = GameObject.Find("Manager").GetComponent<Manager>();
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		/*if(_manager.count - mycount> 1){
-			mycount = _manager.count;
-			saveposition = player.transform.position;
-			Vector3 item_position = player.transform.localPosition;
-			item_position.y -= 120;
-			GameObject localobject =  Instantiate(Resources.Load("Prefab/Item")) as GameObject;
-			localobject.transform.position = item_position;
-		}*/		
+
 	}
-	/*void InstantiateObj(){
-		float inity = 648;
+	
+	void InstatiateObject(){
+		float inity;
 		float i = 0;
-		while(inity > -205){
+		//while(inity > GameObject.Find("Stage/polySurface1").transform.position.y){
+		for(inity = 30;inity > GameObject.Find("Stage/polySurface1").transform.position.y;inity -= 1.5f){
 			i += 0.1f;
 			Vector3 center = new Vector3(0,inity,0);
-			float angle = 50* i %360;
-			inity -= 3f;
-			Vector3 _radian = Vector3.right * 410;
-			Vector3 pos = Quaternion.AngleAxis(angle,Vector3.up)*_radian;	
+			float angle = 60 * i % 360;
+			Vector3 radian_vector = Vector3.right * _radian;
+			Vector3 angle_vector = Quaternion.AngleAxis(angle,Vector3.up) * radian_vector;	
 			GameObject localobject =  Instantiate(Resources.Load("Prefab/Item")) as GameObject;
-			localobject.transform.position = pos + center;
-			Undo.RegisterCreatedObjectUndo(localobject, "CreateObject");
+			localobject.transform.position = angle_vector + center;
+			if(inity > -200){
+				//localobject.transform.localPosition += new Vector3(40*Mathf.Sin(i*1500),0,0);
+				localobject.transform.localPosition += new Vector3(20,0,0);
+			}
+			else if(inity < -200){
+				localobject.transform.localPosition -= new Vector3(20,0,0);
+			}
 		}
-	}*/
+	}
 }

@@ -3,12 +3,12 @@ using System.Collections;
 
 public class CharactorMove : MonoBehaviour {
 	public float angle;
-	public float rds = 410;
-	public float speed = 60;
+	public float rds = 10;
+	public float speed = 20;
 	Vector3 center;
 	Vector3 pos;
 	Vector3 _radian;
-	public float inity = 645;
+	public float inity = 30;
 	public float fallspeed = 0.3f;
 	void Awake(){
 

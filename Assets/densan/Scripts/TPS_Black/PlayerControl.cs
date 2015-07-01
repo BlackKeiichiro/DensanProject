@@ -15,28 +15,30 @@ public class PlayerControl : MonoBehaviour {
 	void Update () {
 		float h = Input.GetAxis("Horizontal");
 		float v = Input.GetAxis("Vertical");
-		_velocity = new Vector3(h , 0 , v);
+		_velocity = new Vector3(2*h , 0 , v);
 		if(v > 0.1){
 			_velocity *= Time.deltaTime * 10;
 		}
 		else if(v < -0.1){
-			_velocity *=  Time.deltaTime * 8;
+			//_velocity *=  Time.deltaTime * 8;
+			v = 0;
 		}
 		else{
 			_velocity *= Time.deltaTime * 5;
 		}
-		if(h > 0.1){
-
+		
+		
+		/*else if(h < -0.1){
 			_magnitude -= 0.6f;
-			lean = Time.deltaTime * leantimeangle;
-		}
-		else if(h < -0.1){
-			_magnitude -= 0.6f;
-			lean = Time.deltaTime * (- leantimeangle);
-		}
-		if(h != 0 || v != 0){
+			lean = Time.deltaTime * -leantimeangle;
+		}*/
+		if((h != 0 || v != 0) && Camera.main.transform.transform.localPosition.z < this.transform.localPosition.z + 20){
 			this.transform.localPosition -= _velocity;
-			this.transform.localRotation = Quaternion.Euler(0,0,lean);
+			
+		}
+		
+		else{
+			this.transform.localPosition -= Vector3.back*0.1f;
 		}
 	}
 }

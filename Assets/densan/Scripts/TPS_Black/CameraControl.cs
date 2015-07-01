@@ -3,10 +3,10 @@ using System.Collections;
 
 public class CameraControl : MonoBehaviour {
 	GameObject _player;
-	Manager mng;
+	Manager manager;
 	public float speed = 0.2f;
 	void Awake(){
-		mng = (Manager)GameObject.Find("Manager").GetComponent<Manager>();
+		manager = (Manager)GameObject.Find("Manager").GetComponent<Manager>();
 		_player = GameObject.Find("Player/Players") as GameObject;
 	}
 	
