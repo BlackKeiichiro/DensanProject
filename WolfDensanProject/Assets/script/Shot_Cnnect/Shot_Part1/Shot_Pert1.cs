@@ -12,6 +12,8 @@ public class Shot_Pert1 : MonoBehaviour {
 	public int narrow_root;//銃の角度を変更する間隔
 	public int narrow_root_max;//銃の角度を変更する最大待ち時間（ショット時）
 	public int narrow_root_min;//銃の角度を変更する最少待ち時間（ノーマル）
+
+	public Quaternion gun_rotation;	//銃の角度
 	
 
 	AudioSource audio;//オーディオ
@@ -24,6 +26,9 @@ public class Shot_Pert1 : MonoBehaviour {
 	//テスト用変数
 	public float ftest;
 	public int itest;
+	public GameObject gtest;
+	public Vector3 v3test;
+	public Quaternion qtest;
 
 	//方向指定用
 	Vector3 diff ;
@@ -47,8 +52,6 @@ public class Shot_Pert1 : MonoBehaviour {
 		Vector3 v3_mouse = Input.mousePosition;
 		//奥行をここで設定
 		v3_mouse.z = 30f;
-		if(v3_mouse.y >= 0){}
-		ftest = v3_mouse.y;
 
 		casol.transform.position = v3_mouse;
 		
@@ -63,33 +66,39 @@ public class Shot_Pert1 : MonoBehaviour {
 	//銃口の角度をせってい
 	void Mouse_rote(){
 
-		//マウスの場所と現在地点を引く
-		diff = Mouse () - this.transform.position;
-		//マウスの方向に向かせる
-		this.transform.rotation = Quaternion.LookRotation(diff);
-
-		float gun_euler_x = this.transform.eulerAngles.x;
-		ftest = this.transform.eulerAngles.x;
-
-		//角度が90より大きければもとの角度から90を引いた数を引く
-		if(gun_euler_x >= 0 && gun_euler_x <= 330){
-			//float diff_gun = 330 - gun_euler_x;
-			//this.transform.Rotate(-diff_gun,0,0);
-			
 			//マウスの場所と現在地点を引く
-			//diff = Mouse () - this.transform.position;
+			diff = Mouse () - this.transform.position;
+		
 			//マウスの方向に向かせる
-			//this.transform.rotation = Quaternion.LookRotation(diff);
-		}
-
-		//マウスカーソルの座標設定
-		//マウスのスクリーン座標取得
-		Vector3 v3_mouse = Input.mousePosition;
+			this.transform.rotation = Quaternion.LookRotation(diff);
 			
-		//カーソルの移動
-		casol.transform.position = v3_mouse;
 
-
+			//マウスのスクリーン座標取得
+			Vector3 v3_mouse = Input.mousePosition;
+			
+			//銃の角度調節
+			gun_rotation = this.transform.rotation;
+			qtest = this.transform.rotation;
+			//上方向に行き過ぎていたら調整
+			if(gun_rotation.x < -0.5 ){
+				float gun_diff = 300f - this.transform.eulerAngles.x;
+				this.transform.Rotate(gun_diff,0,0);
+			}
+			//下方向に行き過ぎてきたら調整
+			else if(gun_rotation.x > 0.5){
+				float gun_diff = 50f - this.transform.eulerAngles.x;
+				this.transform.Rotate(gun_diff,0,0);
+			}
+			//右方向に行き過ぎてきたら調整
+			if(gun_rotation.y > 0.5){
+				float gun_diff = 60f - this.transform.eulerAngles.y;
+				this.transform.Rotate(0,gun_diff,0);
+			}
+			//左方向に行き過ぎてきたら調整
+			if(gun_rotation.y < -0.5){
+				float gun_diff = 300f - this.transform.eulerAngles.y;
+				this.transform.Rotate(0,gun_diff,0);
+			}
 
 	}
 	
@@ -126,7 +135,8 @@ public class Shot_Pert1 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+	
+		//ボタンを押しているときは遅く、押してない時は早く角度を変える速度を設定する
 		if(Input.GetMouseButton(0)){
 			narrow_root = narrow_root_max;
 		}
@@ -135,9 +145,9 @@ public class Shot_Pert1 : MonoBehaviour {
 			
 		}
 		
-
+		//カウントが0の時に角度を変える
 		if((manager.frame_count % narrow_root) == 0){
-			Mouse_rote();
+				Mouse_rote();
 		}
 
 		Balet();
