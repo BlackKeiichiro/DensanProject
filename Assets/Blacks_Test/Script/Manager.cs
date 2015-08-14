@@ -6,7 +6,9 @@ public class Manager : MonoBehaviour {
 	public int count = 0;
 	public float comp = 0.0f;
 	public float spawantime = 0;
+	public float speed = 22;
 	public float root = 1f;
+	public float fall_speed = 0.3f;
 	public bool moveflag = false;
 	float interval = 1.0f;
 	public int partswitch;

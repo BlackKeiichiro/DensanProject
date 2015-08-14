@@ -28,13 +28,10 @@ public class PlayerControl : MonoBehaviour {
 		else
 			_velocity *= Time.deltaTime * 5;
 		
-		this.transform.localPosition += Vector3.forward*0.15f;	
+		this.transform.localPosition -= Vector3.back*0.1f; 
 		
 		if((h != 0 || v != 0)){
 			this.transform.localPosition -= _velocity;
 		}
-		//if(cameraOut.OutScreenObject(this.gameObject.transform)){
-		//	this.transform.localPosition = Camera.main.transform.localPosition-respawn;
-		//}
 	}
 }
