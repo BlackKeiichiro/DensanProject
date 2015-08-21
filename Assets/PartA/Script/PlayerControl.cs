@@ -27,10 +27,10 @@ public class PlayerControl : MonoBehaviour {
 		else
 			_velocity *= Time.deltaTime * 5;
 		
-		this.transform.localPosition -= Vector3.back*0.1f; 
+		this.transform.localPosition += Vector3.back*0.1f; 
 		
 		if((h != 0 || v != 0)){
-			this.transform.localPosition -= _velocity;
+			this.transform.localPosition += _velocity;
 		}
 		
 	}

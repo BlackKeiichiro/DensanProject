@@ -2,8 +2,9 @@
 using System.Collections;
 
 public class SpeedItem : Item {
-	[SerializeField]
-	float i = 2;
+	protected override void Start(){
+		
+	}
 	// Update is called once per frame
 	protected override void Update () {
 		

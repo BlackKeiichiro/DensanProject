@@ -11,6 +11,7 @@ public class ItemInstantiate : MonoBehaviour {
 	public int [,] num = new int[2,2]{{1,2},{3,4}};
 	string speeditem = "Prefabs/SpeedItem";
 	string wall = "Prefabs/Wall";
+	string wepon = "Prefabs/Wepon";
 	public Item[] _item = new Item[3];
 	void Awake(){
 		_manager = GameObject.Find("Manager").GetComponent<Manager>();
