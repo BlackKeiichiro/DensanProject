@@ -5,12 +5,12 @@ using System.Collections;
 public class Point : MonoBehaviour {
 
 
-	public int MAX_HP = 10;//ポイントの最大ＨＰ
-	public int HP;//ポイントの現在ＨＰ
+	public float MAX_HP = 10;//ポイントの最大ＨＰ
+	public float HP;//ポイントの現在ＨＰ
 	public float red;//赤以外を減らしていく
 
-	public int Boss_less = 2;//ボスの体力を減らす値
-	public int add_score = 50;//スコア加算値
+	public float Boss_less = 2;//ボスの体力を減らす値
+	//public int add_score = 50;//スコア加算値
 
 	public Renderer r;//マテリアル用変数
 	public Boss boss;//ボス本体のスクリプト
@@ -21,15 +21,25 @@ public class Point : MonoBehaviour {
 	//再生する音
 	public AudioClip deth;
 
+	public int nam;//このオブジェクトが存在しているのかを参照する番号
+
 	// Use this for initialization
 	void Start () {
 		HP = MAX_HP;
 
 		//ゲットコンポーネント
 		r = GetComponent<Renderer>();//マテリアル用
-		boss = GameObject.Find ("BOSS").GetComponent<Boss>();//ボス
+		boss = GameObject.Find ("baby").GetComponent<Boss>();//ボス
 		manager = GameObject.Find ("Manager").GetComponent<Manager>();//ゲームマネージャー
-		audio = GameObject.Find("shot_mouse").GetComponent<AudioSource>();//オーディオ
+		audio = GameObject.Find("shot_rota").GetComponent<AudioSource>();//オーディオ
+
+		//名前を数字に変換してこのオブジェクトのナンバーを取得
+		nam = int.Parse((gameObject.name.Replace("parte","")));
+
+		//シーン読み込みの時にフラグがたっていればこのオブジェクトを破壊する
+		if(GameObject.Find("boss_manager").GetComponent<Boss_manager>().part[nam] == 1){
+			Destroy (this.gameObject);
+		}
 		
 	}
 	
@@ -46,7 +56,7 @@ public class Point : MonoBehaviour {
 			//破壊後ボスのＨＰを減らしてスコアを加算
 			Destroy(this.gameObject);
 			boss.HP -= Boss_less;
-			manager.score += add_score;
+			GameObject.Find("boss_manager").GetComponent<Boss_manager>().part[nam] = 1;
 
 		}
 
