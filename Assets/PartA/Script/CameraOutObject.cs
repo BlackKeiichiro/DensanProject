@@ -2,10 +2,10 @@
 using System.Collections;
 
 public class CameraOutObject : MonoBehaviour {
-		Camera mainCamera;
-		public float mymargin = 0.01f;
-		float minmargin = 0;
-		float maxmargin = 1;
+		private Camera mainCamera;
+		private float mymargin = 0.1f;
+		private float minmargin = 0;
+		private float maxmargin = 1;
 		// Use this for initialization
 		void Start () {
 			//mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();

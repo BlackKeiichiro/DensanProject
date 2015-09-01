@@ -8,25 +8,18 @@ public class Manager : MonoBehaviour {
 	public int count = 0;
 	public float comp = 0.0f;
 	public float spawantime = 0;
-	public float speed = 22;
+	public float speed = 50;
 	public float root = 1f;
-	public float fall_speed = 0.3f;
+	public float fall_speed = 0.35f;
 	public bool moveflag = false;
 	float interval = 1.0f;
 	public int partswitch;
 	public float _magnitude;
+	public int[,,] patternlist;
 	private Text uitext;
 	private GameObject timetext;
 	
 	void Awake(){
-		/*switch(Application.loadedLevelName){
-			case "test":
-			partswitch = 0;
-			break;
-			case "test2":
-			partswitch = 1;
-			break;
-		}*/
 		uitext = GameObject.Find("Time").GetComponent<Text>();
 	}
 	

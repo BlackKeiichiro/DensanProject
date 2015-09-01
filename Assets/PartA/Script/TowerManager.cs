@@ -15,7 +15,7 @@ public class TowerManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(tower[0].transform.position.y > _player.transform.position.y && between_margin < Mathf.Abs(tower[0].transform.position.y - _player.transform.position.y)){
+		if(tower[0].transform.position.y > _player.transform.position.y && between_margin - 30 < Mathf.Abs(tower[0].transform.position.y - _player.transform.position.y)){
 			//tower[0].transform.position -= Vector3.up*between_margin*3;
 			GameObject localObject = Instantiate(Resources.Load("Prefabs/MainTower"),tower[2].transform.position - Vector3.up*between_margin,Quaternion.Euler(0,160,0)) as GameObject;
 			Destroy(tower[0]);
