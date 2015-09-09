@@ -4,7 +4,7 @@ using System.Collections;
 public class Wall : Item {
 // Use this for initialization
 	protected override void Start () {
-		
+		PositionLock(this.transform.localScale.y/2);
 	}
 	
 	// Update is called once per frame

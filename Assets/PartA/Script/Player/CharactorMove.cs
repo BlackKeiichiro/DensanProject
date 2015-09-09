@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CharactorMove : MonoBehaviour {
 	private float angle;
-	private float rds = 121;
+	private float rds = 145;
 	private Vector3 center;
 	private Vector3 pos;
 	private Vector3 _radian;

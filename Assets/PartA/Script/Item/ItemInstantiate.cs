@@ -26,8 +26,9 @@ public class ItemInstantiate : MonoBehaviour {
 			for(int itemindex = 0;itemindex < item_x.Length;itemindex++){
 				localobject[itemindex] = Instantiate(type_items[manager.patternlist[0,zoneindex,itemindex]]) as GameObject;
 				localobject[itemindex].transform.parent = itemzone_child[zoneindex];
-				localobject[itemindex].transform.localPosition = new Vector3(item_x[itemindex],0,0);
 				localobject[itemindex].transform.localRotation = Quaternion.Euler(Vector3.zero);
+				localobject[itemindex].transform.localPosition = new Vector3(item_x[itemindex],-10,0);
+
 			}
 		}
 	}

@@ -6,7 +6,7 @@ public class SpeedItem : Item {
 	private LayerMask itemlayer;
 	protected override void Start(){
 		itemlayer = ~(1 << this.gameObject.layer);
-		PositionLock(itemlayer,this.transform.localScale.y);
+		PositionLock(this.transform.localScale.y);
 	}
 	// Update is called once per frame
 	protected override void Update () {

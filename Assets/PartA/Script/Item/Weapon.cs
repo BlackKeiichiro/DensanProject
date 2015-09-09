@@ -8,6 +8,7 @@ public class Weapon : Item {
 	private float keep_gage = 0;
 	// Use this for initialization
 	protected override void Start () {
+		PositionLock(this.transform.localScale.y);
 		gage = GameObject.Find("Canvas/Weapon/Gage").GetComponent<Image>();
 	}
 	

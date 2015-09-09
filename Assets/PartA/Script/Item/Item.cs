@@ -19,10 +19,10 @@ abstract public  class Item : MonoBehaviour {
 		this.itemtype = itemtype;
 	}
 	
-	protected void PositionLock(LayerMask layermask,float scale){
-		if(Physics.Raycast(this.transform.position,Vector3.down,out hit,50,layermask)){
+	protected void PositionLock(float scale_y){
+		if(Physics.Raycast(this.transform.position,Vector3.down,out hit,50)){
 			Vector3 pos = hit.point;
-			pos.y += scale;
+			pos.y += scale_y;
 			this.transform.position =  pos;
 		}
 	}
