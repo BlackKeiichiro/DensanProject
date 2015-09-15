@@ -22,7 +22,7 @@ public class ItemInstantiate : MonoBehaviour {
 	void Start () {
 		int random = Random.Range(0,1);
 		GameObject[] localobject = new GameObject[item_x.Length];
-		for(int zoneindex = 0;zoneindex < itemzone_child.Count;zoneindex++){
+		for(int zoneindex = 0;zoneindex < itemzone_child.Count - 1;zoneindex++){
 			for(int itemindex = 0;itemindex < item_x.Length;itemindex++){
 				localobject[itemindex] = Instantiate(type_items[manager.patternlist[0,zoneindex,itemindex]]) as GameObject;
 				localobject[itemindex].transform.parent = itemzone_child[zoneindex];

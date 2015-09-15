@@ -5,7 +5,10 @@ public class TowerManager : MonoBehaviour {
 	[SerializeField]
 	private GameObject[] tower;
 	private GameObject _player;
+	[SerializeField]
 	private float between_margin;
+	[SerializeField]
+	private float keep;
 	//private int nowtower = 0;
 	// Use this for initialization
 	void Start () {
@@ -16,9 +19,9 @@ public class TowerManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(tower[0].transform.position.y > _player.transform.position.y){//between_margin*2 < Mathf.Abs(tower[0].transform.position.y - _player.transform.position.y)){
-			//tower[0].transform.position -= Vector3.up*between_margin*3;
-			GameObject localObject = Instantiate(Resources.Load("Prefabs/maintou"),tower[2].transform.position - Vector3.up*between_margin,Quaternion.Euler(0,160,0)) as GameObject;
+		keep = _player.transform.position.y;
+		if(tower[0].transform.position.y > _player.transform.position.y && between_margin < Mathf.Abs(tower[0].transform.position.y - _player.transform.position.y)){
+			GameObject localObject = Instantiate(Resources.Load("Prefabs/maintou"),tower[2].transform.position - Vector3.up*between_margin,Quaternion.Euler(Vector3.zero)) as GameObject;
 			Destroy(tower[0]);
 			tower = new GameObject[3]{tower[1],tower[2],localObject};
 			//nowtower = (nowtower>1)?0:++nowtower;

@@ -23,7 +23,7 @@ public class PatternLoad : MonoBehaviour {
 
 	void ReadExcelPattern(IWorkbook workbook){
 		int sheetnumber = workbook.NumberOfSheets;
-		loadpattern = new int[sheetnumber,6,5];
+		loadpattern = new int[sheetnumber,8,5];
 		for(int sheetindex = 0;sheetindex < sheetnumber;++sheetindex){
 			ISheet _isheet = workbook.GetSheetAt(sheetindex);
 			int lastrownum = _isheet.LastRowNum;
@@ -32,8 +32,8 @@ public class PatternLoad : MonoBehaviour {
 				if(row == null)continue;
 				for(int cellindex = row.FirstCellNum;cellindex < lastrownum;++cellindex){
 					ICell cell = row.GetCell(cellindex);
-					loadpattern[sheetindex,rowindex,cellindex] = Convert.ToInt32(cell.ToString());
-					Debug.Log(loadpattern[sheetindex,rowindex,cellindex]);
+					if(cell != null)
+						loadpattern[sheetindex,rowindex,cellindex] = Convert.ToInt32(cell.ToString());
 				}
 			}	
 		}
