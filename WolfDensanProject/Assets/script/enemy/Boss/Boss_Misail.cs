@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Boss_Misail : MonoBehaviour {
 
-	public int misail_hp = 8;//ミサイルの耐久度
 	int misail_hp_count;//ミサイルの減らしていくｈｐ
 
 	public bool act = false;//ミサイル発射の合図フラグ
@@ -22,7 +21,6 @@ public class Boss_Misail : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		misail_hp_count = misail_hp;
 		rigi = this.GetComponent<Rigidbody>();
 		camera = GameObject.FindWithTag ("Player");
 		child_missil_collider = transform.FindChild("missile").gameObject.GetComponent<Collider>();
@@ -45,8 +43,12 @@ public class Boss_Misail : MonoBehaviour {
 			if(Mathf.Abs(act_diff.z) < diff.z/dis && look_flag == false){
 				//徐々にカメラの方向へ移動していく
 				//this.transform.rotation = Quaternion.Slerp(this.transform.rotation,Quaternion.LookRotation(act_diff),0.1f);
+
+
 				//プレイヤーの方向を向く
 				this.transform.rotation = Quaternion.LookRotation(act_diff);
+
+
 				//一度動きを止める
 				rigi.velocity = Vector3.zero;
 				look_flag = true;
@@ -60,16 +62,6 @@ public class Boss_Misail : MonoBehaviour {
 			
 		}
 
-		//ＨＰがなくなれば破壊する
-		if(misail_hp_count <= 0){
-			Destroy(this.gameObject);
-		}
 	}
 
-	void OnTriggerEnter(Collider coll){
-		if(coll.gameObject.tag == "balet"){
-			misail_hp_count -= 1;
-		}
-	
-	}
 }

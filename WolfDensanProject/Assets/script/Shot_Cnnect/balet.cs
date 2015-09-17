@@ -21,6 +21,9 @@ public class balet : MonoBehaviour {
 	//ベイビー声
 	public AudioClip baby_vois;
 
+	//ダメージのパーティクル
+	public GameObject dameg_particl;
+
 	// Use this for initialization
 	void Start () {
 
@@ -116,6 +119,12 @@ public class balet : MonoBehaviour {
 
 			//ボスへのダメージやその辺の処理
 			if(hit.transform.gameObject.tag == ("boss")){
+
+				//パーティクルの出現
+				GameObject pate = Instantiate (dameg_particl,this.transform.position,this.transform.rotation) as GameObject;
+
+				Destroy (pate,3f);
+
 				Destroy(this.gameObject,0.1f);
 
 				//ダメージ処理

@@ -18,8 +18,10 @@ public class shot_part8 : MonoBehaviour {
 
 	public int gread_count;//銃のグレードアップの貯める数値
 	public int gread;//現在のグレードを示す数値
+
 	public float heat;//銃の排熱ゲージ
 	public int heat_max = 100;//排熱ゲージマックス値
+	float heat_add;//排熱ゲージの加算値
 	public bool heatheat = true;
 	
 	AudioSource audio;//オーディオ
@@ -135,14 +137,17 @@ public class shot_part8 : MonoBehaviour {
 	void gread_up(){
 		if(gread_count < 100){
 			narrow_balet = 10;
+			heat_add = 3f;
 			gread = 1;
 		}
 		else if(gread_count < 150){
 			narrow_balet = 7;
+			heat_add = 2f;
 			gread = 2;			
 		}
 		else{
 			narrow_balet = 4;
+			heat_add = 1f;
 			gread = 3;
 		}
 
@@ -171,7 +176,7 @@ public class shot_part8 : MonoBehaviour {
 		if(Input.GetMouseButton(0) && manager.balet_count >= narrow_balet){
 
 			//排熱ゲージの加算
-			heat += 2f;
+			heat += heat_add;
 
 			//効果音の再生
 			audio.PlayOneShot(shot);
