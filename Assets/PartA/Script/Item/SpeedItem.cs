@@ -3,9 +3,8 @@ using System.Collections;
 
 public class SpeedItem : Item {
 	private RaycastHit hit;
-	private LayerMask itemlayer;
+
 	protected override void Start(){
-		itemlayer = ~(1 << this.gameObject.layer);
 		PositionLock(this.transform.localScale.y);
 	}
 	// Update is called once per frame

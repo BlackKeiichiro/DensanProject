@@ -7,14 +7,16 @@ using NPOI.XSSF.UserModel;
 using NPOI.SS.UserModel;
 
 public class PatternLoad : MonoBehaviour {
-	private string path = "Assets/PartA/Excel/patternlist.xlsx";
+	//private string path = "Assets/PartA/Excel/patternlist.xlsx";
 	private Manager manager;
 	private int[,,] loadpattern;
 
 	// Use this for initialization
 	void Awake(){
 		manager = GameObject.Find("Manager").GetComponent<Manager>();
-		using (FileStream fs = new FileStream(path,FileMode.Open,FileAccess.Read))
+
+		//using (FileStream fs = new FileStream(path,FileMode.Open,FileAccess.Read)
+		using (FileStream fs = Resources.Load("patternlist")as ((typeof)FileStream)) //new FileStream(path,FileMode.Open,FileAccess.Read)
 		{
 			ReadExcelPattern(new XSSFWorkbook(fs));
 		}
