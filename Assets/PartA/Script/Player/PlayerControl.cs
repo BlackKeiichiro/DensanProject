@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour {
 	private Vector3 _velocity;
-	private Manager manager;
+	private PartAManager manager;
 	private RaycastHit hit;
 	private LayerMask layermask;
 	private CameraOutObject cameraout;
@@ -13,7 +13,7 @@ public class PlayerControl : MonoBehaviour {
 	private Text uicount;
 	// Use this for initialization
 	void Awake(){
-		manager = GameObject.Find("Manager").GetComponent<Manager>();
+		manager = GameObject.Find("Manager").GetComponent<PartAManager>();
 		uicount = GameObject.Find("CameraOutCount").GetComponent<Text>();
 		layermask  = ~(1 << 8);
 	}

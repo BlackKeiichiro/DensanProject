@@ -13,6 +13,8 @@ public class Wall : Item {
 	}
 	
 	protected override void OnTriggerEnter(Collider _collider){
-		
+		if(_collider.transform.tag == "Player"){
+			Debug.Log("HIT");
+		}
 	}
 }

@@ -8,11 +8,11 @@ public class CharactorMove : MonoBehaviour {
 	private Vector3 keep_position;
 	private Vector3 _radian;
 	private float now_fallen_y = 113f;
-	private Manager _manager;
+	private PartAManager _manager;
 	private GameObject first_tower;
 
 	void Awake(){
-		_manager = GameObject.Find("Manager").GetComponent<Manager>();
+		_manager = GameObject.Find("Manager").GetComponent<PartAManager>();
 	}
 	
 	// Use this for initialization

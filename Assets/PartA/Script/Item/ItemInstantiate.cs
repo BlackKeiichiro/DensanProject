@@ -3,17 +3,17 @@
 using System.Collections;
 using System.Collections.Generic;
 public class ItemInstantiate : MonoBehaviour {
-	private float[] item_x = new float[]{-12,-6,0,6,12};
+	private float[] item_x = new float[]{-48,-42,-36,-30,-24,-18,-12,-6,0,6,12,18,24,30,36,42,48};
 	private GameObject[] type_items;
 	private List<Transform> itemzone_child = new List<Transform>();
-	private Manager manager;
+	private PartAManager manager;
 	//public Item[] instant_items;
 
 	void Awake(){
 		foreach(Transform child in this.transform){
 			itemzone_child.Add(child);
 		}
-		manager = GameObject.Find("Manager").GetComponent<Manager>();
+		manager = GameObject.Find("Manager").GetComponent<PartAManager>();
 		type_items = new GameObject[]{
 			 Resources.Load("Prefabs/Wall") as GameObject,
 			 Resources.Load("Prefabs/Weapon") as GameObject,

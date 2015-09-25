@@ -2,7 +2,7 @@
 using System.Collections;
 [SerializeField]
 abstract public  class Item : MonoBehaviour {
-	protected Manager _manager;
+	protected PartAManager _manager;
 	protected GameObject _player;
 	private RaycastHit hit;
 	[SerializeField]
@@ -11,7 +11,7 @@ abstract public  class Item : MonoBehaviour {
 	protected void Awake(){
 		SetItemType(this.GetType().FullName);
 		_player = GameObject.Find("Players") as GameObject;
-		_manager = GameObject.Find("Manager").GetComponent<Manager>();
+		_manager = GameObject.Find("Manager").GetComponent<PartAManager>();
 		
 	}
 	
