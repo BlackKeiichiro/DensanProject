@@ -3,6 +3,7 @@ using System.Collections;
 [SerializeField]
 abstract public  class Item : MonoBehaviour {
 	protected PartAManager _manager;
+    protected ItemManager item_manager;
 	protected GameObject _player;
 	private RaycastHit hit;
 	[SerializeField]
@@ -12,7 +13,7 @@ abstract public  class Item : MonoBehaviour {
 		SetItemType(this.GetType().FullName);
 		_player = GameObject.Find("Players") as GameObject;
 		_manager = GameObject.Find("Manager").GetComponent<PartAManager>();
-		
+		item_manager = GameObject.Find("Manager").GetComponent<ItemManager>();
 	}
 	
 	protected void SetItemType(string itemtype){
