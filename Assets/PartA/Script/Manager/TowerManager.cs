@@ -1,32 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class TowerManager : MonoBehaviour {
+  
 	[SerializeField]
-	private GameObject[] tower;
-	private GameObject _player;
-	[SerializeField]
-	private float between_margin;
+	private const float between_margin = 79;
 	[SerializeField]
 	private float keep;
-	//private int nowtower = 0;
-	// Use this for initialization
+    private const int fst_stage_num = 3;
+    [SerializeField]
+    private GameObject[] tower;
+	private GameObject _player;
+
 	void Start () {
-		tower = new GameObject[3]{GameObject.Find("tou0"),GameObject.Find("tou1"),GameObject.Find("tou2")};
+        tower = new GameObject[fst_stage_num];
+        for (int i = 0; i < fst_stage_num; i++ )
+        {
+            tower[i] = Instantiate(Resources.Load("Prefabs/maintou")) as GameObject;
+            tower[i].transform.position = Vector3.down * (79 * i);
+            tower[i].transform.rotation = Quaternion.Euler(Vector3.zero);
+        }
 		_player = GameObject.Find("Players").transform.FindChild("Main Camera").gameObject;
-		between_margin = Mathf.Abs(tower[0].transform.position.y - tower[1].transform.position.y);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		keep = _player.transform.position.y;
-		if(tower[0].transform.position.y - between_margin > _player.transform.position.y ){//&& between_margin < Mathf.Abs(tower[0].transform.position.y - _player.transform.position.y)){
-			GameObject localObject = Instantiate(Resources.Load("Prefabs/maintou")) as GameObject;
-			localObject.transform.position = tower[2].transform.position - Vector3.up * between_margin;
-			localObject.transform.rotation = Quaternion.Euler(Vector3.zero);
+		if(tower[0].transform.position.y - between_margin > _player.transform.position.y ){
+			GameObject localStage = Instantiate(Resources.Load("Prefabs/maintou")) as GameObject;
+			localStage.transform.position = tower[2].transform.position - Vector3.up * between_margin;
+			localStage.transform.rotation = Quaternion.Euler(Vector3.zero);
 			Destroy(tower[0]);
-			tower = new GameObject[3]{tower[1],tower[2],localObject};
-			//nowtower = (nowtower>1)?0:++nowtower;
+			tower = new GameObject[3]{tower[1],tower[2],localStage};
 		}
 	}
 }

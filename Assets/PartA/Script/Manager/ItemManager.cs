@@ -22,6 +22,7 @@ public class ItemManager : MonoBehaviour {
             gauge.fillAmount += 0.01f;
             if (gauge.fillAmount == 1)
             {
+                gauge_switch = false;
                 weapon_level++;
                 gauge.fillAmount = 0;
                 keep_gage = 0;

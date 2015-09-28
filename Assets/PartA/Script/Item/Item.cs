@@ -8,7 +8,7 @@ abstract public  class Item : MonoBehaviour {
 	private RaycastHit hit;
 	[SerializeField]
 	private string itemtype;
-	// Use this for initialization
+
 	protected void Awake(){
 		SetItemType(this.GetType().FullName);
 		_player = GameObject.Find("Players") as GameObject;
@@ -28,7 +28,6 @@ abstract public  class Item : MonoBehaviour {
 		}
 	}
 	
-	// Update is called once per frame
 	protected abstract void Start();
 	protected abstract void Update ();
 	
