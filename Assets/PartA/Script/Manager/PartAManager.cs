@@ -8,7 +8,7 @@ public class PartAManager : MonoBehaviour {
     public int count;
     public int weapon_level = 0;
 	public float dcount = 0.0f;
-	public float speed = 80;
+	public float speed = 40;
 	public float root = 1f;
 	public float fall_speed = 0.85f;
 	public bool moveflag = false;

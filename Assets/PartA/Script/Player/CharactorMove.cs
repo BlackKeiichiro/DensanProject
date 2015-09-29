@@ -9,7 +9,7 @@ public class CharactorMove : MonoBehaviour {
 	private Vector3 _radian;
 	private float now_fallen_y = 113f;
 	private PartAManager _manager;
-	private GameObject first_tower;
+
 
 	void Awake(){
 		_manager = GameObject.Find("Manager").GetComponent<PartAManager>();
@@ -17,7 +17,6 @@ public class CharactorMove : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		first_tower = GameObject.Find("tou0");
 		//inity += tower.transform.position.y;
 	}
 	

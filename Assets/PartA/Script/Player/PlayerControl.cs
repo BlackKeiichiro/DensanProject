@@ -60,9 +60,8 @@ public class PlayerControl : MonoBehaviour {
 		else if(v < -0.1)
 			v = h = 0;
 		else
-			_velocity *= Time.deltaTime * 4;
-		
-		this.transform.localPosition += Vector3.back*0.05f; 
+			_velocity *= Time.deltaTime * 5;
+        this.transform.localPosition += Vector3.back*0.05f; 
 		
 		if((h != 0 || v != 0)){
 			this.transform.localPosition += _velocity;
