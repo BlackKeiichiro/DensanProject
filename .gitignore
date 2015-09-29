@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Mac
 .DS_Store
 
@@ -15,3 +16,20 @@
 /*.userprefs
 /*.pidb
 /*.booproj
+=======
+# for unity
+[Tt]emp/
+[Oo]bj/
+[Ll]ibrary/
+[Bb]uild/
+
+# for VisualStudio/MonoDevelop
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+>>>>>>> 26075aa84e67b997d9e0ad5743424b478fd41115
