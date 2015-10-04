@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour {
 	private Vector3 _velocity;
-	private PartAManager manager;
+	private Count count;
 	private RaycastHit hit;
 	private LayerMask layermask;
 	private CameraOutObject cameraout;
@@ -13,7 +13,7 @@ public class PlayerControl : MonoBehaviour {
 	private Text uicount;
 	// Use this for initialization
 	void Awake(){
-		manager = GameObject.Find("Manager").GetComponent<PartAManager>();
+		count = GameObject.Find("Manager").GetComponent<Count>();
 		uicount = GameObject.Find("CameraOutCount").GetComponent<Text>();
 		layermask  = ~(1 << 8);
 	}
@@ -31,9 +31,9 @@ public class PlayerControl : MonoBehaviour {
 	void ScreenOutCounter(){
 		if(cameraout.OutScreenObject(this.transform)){
 			if(camout_keepcount != 0){
-				camout_count = manager.count - camout_keepcount;
+				camout_count = count.count - camout_keepcount;
 			}else{
-				camout_keepcount = manager.count;
+				camout_keepcount = count.count;
 			}
 			uicount.text = camout_count.ToString();
 			if(camout_count > 5){
@@ -61,7 +61,7 @@ public class PlayerControl : MonoBehaviour {
 			v = h = 0;
 		else
 			_velocity *= Time.deltaTime * 5;
-        this.transform.localPosition += Vector3.back*0.05f; 
+        //this.transform.localPosition -= Vector3.back*0.05f; 
 		
 		if((h != 0 || v != 0)){
 			this.transform.localPosition += _velocity;

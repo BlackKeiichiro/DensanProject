@@ -11,7 +11,7 @@ public class Move : MonoBehaviour {
 	//private float keep = 0;
 	// Use this for initialization
 	void Start () {
-		rds = Math.Abs(GameObject.Find("Player").transform.position.x);
+		rds = 410;
 		bake_rigidbody = this.GetComponent<Rigidbody>();
 	
 	}
@@ -31,7 +31,7 @@ public class Move : MonoBehaviour {
 		this.transform.localPosition += velocity * h_speed;
 
 		Vector3 circle_vector = new Vector3(-Mathf.Sin(w*t),- fall_speed,Mathf.Cos(w*t));
-		this.transform.rotation = Quaternion.Euler(0,60-w*t*55,0);
+		//this.transform.rotation = Quaternion.Euler(0,60-w*t*55,0);
 		bake_rigidbody.velocity = -rds * w * circle_vector;
 	}
 }
