@@ -15,14 +15,14 @@ public class PlayerMove : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		center = Vector3.zero;
+        center = new Vector3(0,-3.8f,0);
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 		float h = Input.GetAxis("Horizontal");
 		moveDistace = h;
-		if(h > 0.1 || h < -0.1)
+        if (h > 0.1 || h < -0.1)
 			moveDistace *= Time.deltaTime * 8;
 		playerX -= moveDistace;
 		angle += speed * Time.deltaTime % 360;
