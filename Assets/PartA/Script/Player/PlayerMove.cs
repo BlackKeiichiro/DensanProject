@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PlayerMove : MonoBehaviour {
 	private float angle;
-	private float speed = 40;
+	private float speed = 10;
 	private float moveDistace;
 	private float playerX = 400;
 	private Vector3 center;
