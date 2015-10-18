@@ -18,7 +18,7 @@ public class Count : MonoBehaviour {
 	void Start () {
 	
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		dcount += Time.deltaTime;

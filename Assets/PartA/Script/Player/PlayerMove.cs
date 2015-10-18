@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 
 public class PlayerMove : MonoBehaviour {
-	private float angle;
+	private float angle = -30;
 	private float speed = 10;
 	private float moveDistace;
 	private float playerX = 400;
