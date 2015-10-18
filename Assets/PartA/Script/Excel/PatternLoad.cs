@@ -17,12 +17,12 @@ public static class PatternLoad{
 				for(int sheetindex = 0;sheetindex < sheetnumber;++sheetindex){
 					ISheet _isheet = workbook.GetSheetAt(sheetindex);
 					int lastrownum = _isheet.LastRowNum;
-					int [][] rowelements = new int[lastrownum][];
+					int [][] rowelements = new int[lastrownum+1][];
 					for(int rowindex = _isheet.FirstRowNum;rowindex <= lastrownum;++rowindex){
 						IRow row = _isheet.GetRow(rowindex);
 						if(row == null)continue;
 						int lastcellnum = row.LastCellNum;
-						int[] cellelements = new int[lastcellnum];
+						int[] cellelements = new int[lastcellnum+1];
 						for(int cellindex = row.FirstCellNum;cellindex < lastcellnum;++cellindex){
 							ICell cell = row.GetCell(cellindex);
 							if(cell != null){

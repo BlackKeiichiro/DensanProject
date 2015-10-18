@@ -23,6 +23,7 @@ public class WeaponItem : Item {
             getitemSE.LoadAudioData();
             item_manager.OnTriggerCall();
             AudioSource.PlayClipAtPoint(getitemSE,this.transform.position,0.3f);
+			Destroy(this.gameObject);
 		}
 	}
 

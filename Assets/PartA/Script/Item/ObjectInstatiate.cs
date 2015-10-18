@@ -12,7 +12,7 @@ public class ObjectInstatiate : MonoBehaviour {
 	private GameObject[] itemzones;
 	private GameObject[] kindobject;
 	private int[][][] itempattern;
-	private string path = "";
+	private string path = "Pattern/patternlist.xlsx";
 	public bool shiftzone = false;
 
 	// Use this for initialization

@@ -12,9 +12,10 @@ public class Explosiion : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(BetweenExplosionToPlayer(player,this.gameObject) < 5 && !explosion_flag){
-			explosion_flag = true;
+		if(explosion_flag){
+			explosion_flag = false;
 
+			Debug.Log("Fire");
 		}
 
 	}
@@ -22,5 +23,11 @@ public class Explosiion : MonoBehaviour {
 		float x = Mathf.Pow(player.transform.position.x - this.transform.position.x,2);
 		float z = Mathf.Pow(player.transform.position.z - this.transform.position.z,2);
 		return Mathf.Sqrt(x + z);
+	}
+
+	void OnTriggerEnter(Collider collider){
+		if(collider.transform.tag == "Player"){
+			explosion_flag = true;
+		}
 	}
 }
