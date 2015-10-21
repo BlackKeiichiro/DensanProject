@@ -6,6 +6,7 @@ public class ObjectInstatiate : MonoBehaviour {
 	private int pass_zone = 1;
 	private float rds = 400;
 	private float angle = 0;
+	private float createitemsY = -3.5f;
 	private Vector3 radian;
 	private Vector3 center;
 	private Vector3 rotate_position;
@@ -54,7 +55,7 @@ public class ObjectInstatiate : MonoBehaviour {
 				if(itempattern[0][zoneindex][itemindex] != -1){
 					GameObject localobject = Instantiate((zoneindex == 0)?kindobject[0]:kindobject[1]) as GameObject;
 					localobject.transform.parent = localparent.transform;
-					localobject.transform.localPosition = new Vector3(Define.ITEM_FiRST_SIDE - Define.BETWEEN_ITEM * itemindex,-3.7f,0);
+					localobject.transform.localPosition = new Vector3(Define.ITEM_FiRST_SIDE - Define.BETWEEN_ITEM * itemindex,createitemsY,0);
 				}
 			}
 		}

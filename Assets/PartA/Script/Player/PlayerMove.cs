@@ -31,4 +31,6 @@ public class PlayerMove : MonoBehaviour {
 		this.transform.rotation = Quaternion.Euler(0,Define.PLAYER_FIX_ROTATE + angle,0);
 		this.transform.position = - rotate_position + center;
 	}
+
+
 }
