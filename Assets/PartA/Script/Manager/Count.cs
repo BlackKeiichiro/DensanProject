@@ -8,9 +8,15 @@ public class Count : MonoBehaviour {
 	private Text escape_ui;
 	private float dcount = 0.0f;
 	private float esc_count = 30.0f;
+	private ItemManager manager;
+	private int stage;
 	public int count;
 
 	void Awake(){
+		dcount = PlayerPrefs.GetFloat("Count");
+		stage = PlayerPrefs.GetInt("StageNumber");
+		stage++;
+		manager = GameObject.Find("Manager").GetComponent<ItemManager>();
 		time_ui = GameObject.Find("Canvas/TimePanel/Time").GetComponent<Text>();
 		escape_ui = GameObject.Find("Canvas/EscapePanel/EscapeTime").GetComponent<Text>();
 	}
@@ -27,6 +33,10 @@ public class Count : MonoBehaviour {
 		time_ui.text = string.Format("{0:N}\r\n",dcount).ToString();
 		if(esc_count <= 0.00f){
 			esc_count = 0.00f;
+			PlayerPrefs.SetFloat("Count",esc_count);
+			PlayerPrefs.SetInt("StageNumber",stage);
+			PlayerPrefs.SetInt("Grade",manager.GetGrage());
+			Application.LoadLevel("");
 		}
 		escape_ui.text = string.Format("{0:N}\r\n",esc_count).ToString();
 	}

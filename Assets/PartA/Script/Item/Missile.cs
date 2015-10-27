@@ -5,10 +5,13 @@ using System.Collections;
 public class Missile : MonoBehaviour {
 	private GameObject explstnAOE;
 	private Rigidbody _rigidbody;
-	private float speed = 8;
+	private float speed;
+	private PlayerMove player;
 	// Use this for initialization
 	void Start () {
 		_rigidbody = this.GetComponent<Rigidbody>();
+		player = GameObject.Find("Player").GetComponent<PlayerMove>();
+		speed = player.GetSpeed();
 	}
 	
 	// Update is called once per frame

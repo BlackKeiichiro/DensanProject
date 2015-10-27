@@ -7,11 +7,12 @@ public class ItemManager : MonoBehaviour {
     private Text level_ui;
     private bool gauge_switch = false;
     private float keep_gage = 0;
-    private float one_gauge = 0.1f;
+    private float one_gauge = 0.5f;
     private int weapon_level = 0;
     private int limit_gauge = 3;
-
+	
 	void Start () {
+		weapon_level = PlayerPrefs.GetInt("Grade");
         gauge = GameObject.Find("Canvas/Weapon/Gauge").GetComponent<Image>();
         level_ui = GameObject.Find("Canvas/Weapon/Level").GetComponent<Text>();
 	}
@@ -31,31 +32,35 @@ public class ItemManager : MonoBehaviour {
         }
 	}
 
-    
+	public int GetGrage(){
+		return weapon_level;
+	}
+
+	private string LevelFactory(int level)
+	{
+		string kanji_level = level_ui.text;
+		switch (level)
+		{
+		case 0:
+			kanji_level = "零";
+			break;
+		case 1:
+			kanji_level = "壱";
+			break;
+		case 2:
+			kanji_level = "弐";
+			break;
+		case 3:
+			kanji_level = "参";
+			break; 
+		}
+		return kanji_level;
+	}
 
     public void OnTriggerCall() {
         gauge_switch = true;
         keep_gage = gauge.fillAmount;
     }
 
-    private string LevelFactory(int level)
-    {
-        string kanji_level = level_ui.text;
-        switch (level)
-        {
-            case 0:
-                kanji_level = "零";
-                break;
-            case 1:
-                kanji_level = "壱";
-                break;
-            case 2:
-                kanji_level = "弐";
-                break;
-            case 3:
-                kanji_level = "参";
-                break; 
-        }
-        return kanji_level;
-    }
+   
 }

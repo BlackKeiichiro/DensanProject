@@ -8,12 +8,13 @@ public class Explosiion : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find("player");
+		player = GameObject.Find("Player");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(BetweenExplosionToPlayer(player,this.gameObject) < 50 && !explosion_flag){
+		this.transform.LookAt(player.transform);
+		if(PlayerLength(player,this.gameObject) < 50 && !explosion_flag){
 			Debug.Log("Fire");
 			explosion_flag = true;
 			GameObject localmissile = Instantiate(Resources.Load("Prefabs/Missile")) as GameObject;
@@ -22,7 +23,7 @@ public class Explosiion : MonoBehaviour {
 			localmissile.transform.position = player.transform.localPosition + new Vector3(0,50,-20);
 		}
 	}
-	float BetweenExplosionToPlayer(GameObject player,GameObject explosion){
+	float PlayerLength(GameObject player,GameObject explosion){
 		float x = Mathf.Pow(player.transform.position.x - this.transform.position.x,2);
 		float z = Mathf.Pow(player.transform.position.z - this.transform.position.z,2);
 		return Mathf.Sqrt(x + z);

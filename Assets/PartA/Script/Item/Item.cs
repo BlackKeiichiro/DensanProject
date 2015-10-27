@@ -11,7 +11,7 @@ abstract public  class Item : MonoBehaviour {
 
 	protected void Awake(){
 		SetItemType(this.GetType().FullName);
-		_player = GameObject.Find("Players") as GameObject;
+		_player = GameObject.Find("Player") as GameObject;
 		_manager = GameObject.Find("Manager").GetComponent<PartAManager>();
 		item_manager = GameObject.Find("Manager").GetComponent<ItemManager>();
 	}

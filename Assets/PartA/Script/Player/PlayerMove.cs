@@ -4,13 +4,12 @@ using System.Collections;
 
 public class PlayerMove : MonoBehaviour {
 	private float angle = -30;
-	private float speed = 10;
+	private float speed = 20;
 	private float moveDistace;
 	private float playerX = 400;
 	private Vector3 center;
 	private Vector3 radian;
 	private Vector3 rotate_position;
-
 	private GameObject player;
 
 	// Use this for initialization
@@ -32,5 +31,14 @@ public class PlayerMove : MonoBehaviour {
 		this.transform.position = - rotate_position + center;
 	}
 
+	public float GetSpeed(){
+		return speed;
+	}
+
+	void OnTriggerEnter(Collider _collider){
+		if(_collider.transform.tag == "explosion"){
+			Debug.Log("Damage");
+		}
+	}
 
 }
